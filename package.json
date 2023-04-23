@@ -1,0 +1,21 @@
+{
+  "name": "opengluck-webhook-episode-alert",
+  "version": "1.0.0",
+  "description": "This repository sends notifications when you are in a non-low episode and not cleared for a while.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "start": "TZ=Europe/Paris node index",
+    "eslint": "eslint ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "diably-apn": "file:../diably-apn",
+    "opengluck-node-client": "file:../opengluck-node-client"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "jest": "^29.5.0"
+  }
+}
