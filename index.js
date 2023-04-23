@@ -7,7 +7,7 @@ const {
 } = require("./lib/episode");
 require("dotenv").config();
 
-const reminderInterval = 120e3;
+const reminderInterval = 60e3;
 const port = Number(process.env.PORT || 6503);
 
 async function handleReqEpisodeChanged(res, body) {
