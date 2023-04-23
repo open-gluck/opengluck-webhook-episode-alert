@@ -1,6 +1,7 @@
 .env
 *.p8
 config.mjs
+.env
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,vim,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,vim,node

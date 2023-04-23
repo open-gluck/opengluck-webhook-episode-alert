@@ -8,6 +8,13 @@ while, and it has not cleared.
 Checkout both this repository and `diably-apn` in the same directory, and
 configure APNs in the latter module.
 
+Create an `.env` file with:
+
+```
+OPENGLUCK_URL=https://opengluck.example.com
+OPENGLUCK_TOKEN=abcd
+```
+
 ### Webhooks
 
 Install this webhook in opengluck for the `Glucose Episode Changed

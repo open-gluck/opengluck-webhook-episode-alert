@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "diably-apn": "file:../diably-apn",
+    "dotenv": "^16.0.3",
     "opengluck-node-client": "file:../opengluck-node-client"
   },
   "devDependencies": {
