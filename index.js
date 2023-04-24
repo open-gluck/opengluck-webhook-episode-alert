@@ -1,4 +1,5 @@
 const http = require("http");
+const { hasCgmRealTimeData } = require("opengluck-node-client");
 const https = require("https");
 const {
   handleEpisodeChange,
@@ -18,12 +19,16 @@ async function handleReqEpisodeChanged(res, body) {
   const newEpisode = data.new.episode;
   const newTimestamp = new Date(data.new.timestamp);
   const cgmProperties = data["cgm-properties"];
-  const hasRealTime = cgmProperties["has-real-time"];
+  const currentCgmHasRealTime = cgmProperties["has-real-time"];
 
-  await handleEpisodeChange({ newEpisode, newTimestamp });
+  await handleEpisodeChange({
+    newEpisode,
+    newTimestamp,
+    currentCgmHasRealTime,
+  });
 
   console.log(
-    `Got an episode change, newEpisode=${newEpisode}, newTimestamp=${newTimestamp}, hasRealTime=${hasRealTime}`
+    `Got an episode change, newEpisode=${newEpisode}, newTimestamp=${newTimestamp}, currentCgmHasRealTime=${currentCgmHasRealTime}`
   );
 }
 
@@ -37,14 +42,15 @@ async function handleReqEpisodeChanged(res, body) {
       (res) => {
         const chunks = [];
         res.on("data", (chunk) => chunks.push(chunk));
-        res.on("end", () => {
+        res.on("end", async () => {
           const body = Buffer.concat(chunks).toString();
           const data = JSON.parse(body);
           console.log("Current episode", data);
           if (data) {
-            setCurrentEpisode({
+            await setCurrentEpisode({
               episode: data.episode,
               timestamp: new Date(data.timestamp),
+              hasRealTime: await hasCgmRealTimeData(),
             });
           }
           resolve();
