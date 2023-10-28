@@ -5,7 +5,7 @@ while, and it has not cleared.
 
 ## Configuration
 
-Checkout both this repository and `diably-apn` in the same directory, and
+Checkout both this repository and `opengluck-apn` in the same directory, and
 configure APNs in the latter module.
 
 Create an `.env` file with:
